@@ -46,5 +46,14 @@ app.use(express.json());
 
 app.use('/api',Routes);
 
+// ajouté deb
+
+app.use(express.static(__dirname + '/public/'));
+
+  // Handle SPA
+app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
+
+// ajouté fin
+
 app.listen(port, () => 
     console.log('server listenning on port 4000'));
