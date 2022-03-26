@@ -33,6 +33,14 @@ const Routes = require('./routes/stuff');
 const app = express();
 const port = 4000;
 
+// ajouté avec v -------------------------
+
+app.use(express.static(__dirname + "/dist/"));
+app.get(/.*/,function(req,res ) {
+  res.sendFile(__dirname + "/dist/index.html");
+})
+// ---------------------------
+
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
