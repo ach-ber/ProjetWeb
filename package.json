@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ach-ber/ProjetWeb/issues"
   },
-  "homepage": "https://github.com/ach-ber/ProjetWeb#readme"
+  "homepage": "https://github.com/ach-ber/ProjetWeb#readme",
+  "engines": {
+    "node": "17.x"
+  }
 }
