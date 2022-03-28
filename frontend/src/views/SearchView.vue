@@ -87,7 +87,9 @@ section {
   min-height: 400px;
 }
 
-
+.sectionEmpty {
+  background-color: white;
+}
 
 section div {
   width: 100%;

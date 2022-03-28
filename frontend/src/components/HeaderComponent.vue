@@ -2,15 +2,15 @@
 
   <header id="header">
     <div>
-      <img src="@/assets/LogoPolytech.png">
+      <img src="@/assets/LogoPolytechBis.png">
       <p> {{$store.state.ID}} </p>
     </div>
     <div>
       <router-link class="routerElement" to="/">Home</router-link>
       <router-link class="routerElement" to="/about">About</router-link>
       <a href="#footer" v-smooth-scroll>Contact</a>
-      <router-link v-if="!connected" class="routerElement" to="/SigninViewBis">SignIn</router-link>
-      <router-link v-if="!connected" class="routerElement" to="/LoginViewBis">Login</router-link>
+      <router-link v-if="!connected" class="routerElement" to="/SigninView">SignIn</router-link>
+      <router-link v-if="!connected" class="routerElement" to="/LoginView">Login</router-link>
     </div>
     <div>
       <button v-if="connected" @click="logout"><img src="@/assets/LogoutIcon.png"></button>
@@ -21,7 +21,7 @@
         <img src="@/assets/account.png">ACCOUNT
       </router-link>
 
-      <router-link  v-if="!connected" id="AccountHeader" class="routerElement" to="/SigninViewBis">
+      <router-link  v-if="!connected" id="AccountHeader" class="routerElement" to="/SigninView">
         <img src="@/assets/account.png">SIGN IN
       </router-link>
     </div>
@@ -99,6 +99,10 @@ header {
   justify-content: space-between;
 }
 
+header>div>p {
+  display: none;
+}
+
 header div:nth-child(3) button {
   background-color: #FA3402;
   border: solid 1px #FA3402;
@@ -140,6 +144,11 @@ header div:nth-child(1) img{
   height:80px;
   border-radius:4px;
   margin-left: 20px;
+  background-color: black;
+}
+
+header div:nth-child(1) img:hover {
+  cursor: pointer;
 }
 
 header div .routerElement, header div a {

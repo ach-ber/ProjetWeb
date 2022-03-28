@@ -1,21 +1,26 @@
 <template>
   <section>
-      <form action="http://localhost:4000/api/AccountView" method="post">
-            email<input type="email" v-model="email" name ="email" ><br>
-            password<input type="text" name="password"  v-model="password"><br>{{ email }}<br>{{ password }}<br>
-            <button type="button" @click="signInButtonPressed" >bouton</button>
-      </form>
+    <FormKit v-model="formData" id="formLogin" type="form" submit-label="Login" @submit="login">
+      <h2>Login</h2>
+      <FormKit name="email" label="Email address" validation="required|email" />
+      <FormKit type="password" name="password" label="Password" validation="required" />
+      <ul v-if="errorLogin" class="formkit-messages" aria-live="assertive">
+        <li class="formkit-message" data-message-type="ui">
+          Mot de passe ou adresse email incorrect !
+        </li>
+      </ul>
+    </FormKit>
+        
   </section>
 </template>
 
 <script>
 
-// import router  from '../router';
+import router  from '../router';
 const axios = require("axios");
 
-
 export default {
-  name: 'LoginView',
+  name: 'LoginViewbis',
   components: {
 
   },
@@ -23,28 +28,102 @@ export default {
     return {
       email:'pierre.martin@gmail.com',
       password:'erhgherghergerh',
+      envoie:"pas envoyé",
+      formData:"",
+      valuetest:"jazfjzaf@gmail.com",
+      errorLogin:false,
     }
   },
   methods: {
-
-    signInButtonPressed() {
-
-        //router.push('/test');
-        axios.post('http://localhost:4000/api/login',
+    login() {
+        axios.post(this.$store.state.URLAPI+'/login',
         {
-            "email":this.email,
-            "password":this.password
+            "email":this.formData.email.toString(),
+            "password":this.formData.password.toString()
         }
         ).then((response) => {
             sessionStorage.setItem('token',response.data.token);
+            sessionStorage.setItem('userId',response.data.userId);
+            this.$store.state.ID = response.data.userId;
             this.$store.state.isConnected = "Connecté !";
+            router.push('/AccountView');
+        }).catch(() => {
+          this.errorLogin = true;
         })
     }
   },
 };
 </script>
 
-<style scoped>
+<style>
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  font-family: 'Montserrat';
+}
+
+section #formLogin {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-flow: wrap column;
+  width:500px;
+  border: solid 1px #dadce0;
+  margin-top: 40px;
+}
+
+section form h2{
+  font-weight: 600;
+  color: #000;
+  font-size: 2.25rem;
+  margin: 40px 0px 40px 0px;
+}
+
+form>div>div .formkit-label {
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.2;
+  color:black;
+}
+
+section #formLogin>div {
+  padding:0px;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column wrap;
+  height: 120px;
+}
+
+section #formLogin>div:last-child div  {
+  display: flex;
+  justify-content: center;
+}
+
+section #formLogin>div:last-child div div {
+  display: flex;
+  align-items: center;
+}
+
+section #formLogin>div:last-child div div button,section #formside form>div div div button{
+  width: 180px;
+  margin:0px;
+  border: solid 1px #1b46c2;
+  background-color:#1b46c2;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+
+section #formLogin>div>div{
+  width: 460px;
+  
+}
+
+
 
 
 </style>

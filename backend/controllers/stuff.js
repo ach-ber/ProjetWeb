@@ -1,5 +1,5 @@
 
-const pool = require('../models/Thing');
+const pool = require('../models/model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 

@@ -3,10 +3,8 @@ import HomeView from '@/views/HomeView.vue'
 import AvisView from '@/views/AvisView.vue'
 import LoginView from '@/views/LoginView.vue'
 import AccountView from '@/views/AccountView.vue'
-import SigninView from '@/views/SigninView.vue'
 import SearchView from '@/views/SearchView.vue'
-import LoginViewBis from '@/views/LoginViewBis.vue'
-import SigninViewBis from '@/views/SigninViewBis.vue'
+import SigninView from '@/views/SigninView.vue'
 import PublishView from '@/views/PublishView.vue'
 import ModifyAvis from '@/views/ModifyAvis.vue'
 import AboutView from '@/views/AboutView.vue'
@@ -18,19 +16,14 @@ const routes = [
     component: ModifyAvis
   },
   {
-    path: '/SigninViewBis',
-    name: 'SigninViewBis',
-    component: SigninViewBis
+    path: '/SigninView',
+    name: 'SigninView',
+    component: SigninView
   },
   {
     path: '/PublishView',
     name: 'PublishView',
     component: PublishView
-  },
-  {
-    path: '/LoginViewBis',
-    name: 'LoginViewBis',
-    component: LoginViewBis
   },
   {
     path: '/AvisView/:id',
@@ -46,11 +39,6 @@ const routes = [
     path: '/LoginView',
     name: 'LoginView',
     component: LoginView
-  },
-  {
-    path: '/SigninView',
-    name: 'SigninView',
-    component: SigninView
   },
   {
     path: '/AccountView',
@@ -83,7 +71,7 @@ router.beforeEach((to, from, next) => {
   const loggedIn = (sessionStorage.getItem('userId') && sessionStorage.getItem('token'));
 
   if (authRequired && !loggedIn) {
-    return next('/LoginViewBis');
+    return next('/LoginView');
   }
 
   next();
