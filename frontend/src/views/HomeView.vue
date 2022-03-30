@@ -35,9 +35,10 @@ export default {
       count: 0,
       dataRecentavis:[],
       dataBestavis:[],
-      urlAvis:'http://localhost:8081/#/AvisView/',
+      urlAvis:'https://feheroku.herokuapp.com/#/AvisView/',
     }
   },
+/* ------------------------- récupération avis récent & mieux notés ------------------------- */
 
   beforeMount() {
     axios.get(this.$store.state.URLAPI+'/Recentavis').then(response => this.dataRecentavis = (response.data));
@@ -59,7 +60,7 @@ section {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  background-color: red; /* #f6f8fe;*/
+  background-color:  #f6f8fe;
   padding-bottom: 40px;
 }
 section div {

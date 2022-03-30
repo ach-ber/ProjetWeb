@@ -1,4 +1,6 @@
 
+/* ------------------------- model connection bd (local) ------------------------- */
+
 const Pool = require('pg').Pool;
 
 const pool = new Pool({

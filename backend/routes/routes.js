@@ -1,7 +1,6 @@
+/* --------------------------- importation controller --------------------------- */
 
 const { Router } = require('express');
-
-//const controller = require('../controllers/stuff');
 const avis = require('../controllers/avisController');
 const student = require('../controllers/studentController');
 const search = require('../controllers/searchController');

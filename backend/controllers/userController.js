@@ -3,7 +3,7 @@ const pool = require('../models/model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
+/* ------------------------- Controller concernant les routes user ------------------------- */
 
 const createStudent = (req, res) => {
   

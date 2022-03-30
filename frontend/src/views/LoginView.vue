@@ -35,6 +35,9 @@ export default {
     }
   },
   methods: {
+
+/* ------------------------- fonction login ------------------------- */
+
     login() {
         axios.post(this.$store.state.URLAPI+'/login',
         {

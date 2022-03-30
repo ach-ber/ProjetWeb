@@ -1,5 +1,7 @@
 const pool = require('../models/model');
 
+/* ------------------------- Controller concernant les routes search ------------------------- */
+
 const getCompany = (req, res) => {
     pool.query("select id_company as value, name_company as label from company", (error,results) => {
         if (error) throw error;

@@ -3,7 +3,7 @@
 const express = require('express');
 const Routes = require('./routes/routes');
 const app = express();
-const port = 4000;
+const port = process.env.PORT | 4000;
 
 
 
@@ -18,14 +18,6 @@ app.use(express.json());
 
 app.use('/api',Routes);
 
-// ajouté deb
-
-app.use(express.static(__dirname + '/public/'));
-
-  // Handle SPA
-app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
-
-// ajouté fin
 
 app.listen(port, () => 
     console.log('server listenning on port 4000'));

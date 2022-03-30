@@ -32,6 +32,8 @@
 
 <script setup>
 
+/* ------------------------- fonction vérification si l'entreprise est déjà existante ------------------------- */
+
 const company_exists = async function ({ value }) {
     let rep = [];
     await axios.get('http://localhost:4000/api/company').then((response) => {
@@ -77,6 +79,8 @@ export default {
         this.completeCompany=false;
     },
 
+/* ------------------------- fonction publier avis ------------------------- */
+
     Publish() {
       
         axios.post(this.$store.state.URLAPI+'/createavis',
@@ -94,8 +98,11 @@ export default {
         })
         this.completePublish = true;
         this.$formkit.reset('formPublish');
-        //router.push('/test');
+        
     },
+  
+/* ------------------------- fonction ajouter entreprise ------------------------- */
+
     Add() {
         axios.post(this.$store.state.URLAPI+'/createcompany',this.formDataCompany,
         {

@@ -31,7 +31,7 @@ export default {
         speciality:"",
         AvisInfo:[],
         vide:false,
-        urlAvis:'http://localhost:8081/#/AvisView/',
+        urlAvis:'https://feheroku.herokuapp.com/#/AvisView/',
         test:'',
         isTriNote:true,
     }

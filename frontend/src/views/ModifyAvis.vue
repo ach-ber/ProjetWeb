@@ -35,6 +35,8 @@ export default {
   },
   methods: {
 
+  /* ------------------------- fonction modifier avis ------------------------- */
+
     Modify() {
         axios.put(this.$store.state.URLAPI+'/student/'+this.$store.state.ID+'/avis/'+this.$route.params.id,
         {
@@ -49,14 +51,14 @@ export default {
           }
         }).then(
           ()=> {
-            //axios.get('http://localhost:4000/api/student/'+this.$store.state.ID+'/avis/'+this.$route.params.id).then(response => this.test = (response.data[0]));
+            
             this.completeModify = true;
             router.push('/AccountView');
           }
         ).catch(() => {
           this.notcompleteModify = true;
         })
-        //router.push('/test');
+      
     },
   },
 
@@ -64,7 +66,6 @@ export default {
   beforeCreate() {
     axios.get(this.$store.state.URLAPI+'/company').then(response => this.companies = (response.data));
     
-        //() => {for (const element of this.companies) {this.stateList.push({label:element.name_company,value:element.id_company})}})
   },
   created() {
     axios.get(this.$store.state.URLAPI+'/student/2/avis/'+this.$route.params.id).then(response => 
@@ -75,8 +76,6 @@ export default {
     this.formDataAvis.date = this.test.date.substring(0,10);
     })
   },
-  mounted() {
-  }
 
 };
 </script>

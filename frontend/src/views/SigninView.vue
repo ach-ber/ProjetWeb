@@ -18,6 +18,8 @@
 
 <script setup>
 
+/* ------------------------- vérification email ------------------------- */
+
 const email_exists = async function ({ value }) {
     let rep = [];
     await axios.get('http://localhost:4000/api/studentemail').then((response) => {
@@ -57,14 +59,17 @@ export default {
   },
   methods: {
 
+/* ------------------------- fonction pour créer un compte ------------------------- */
+
     SignIn() {
-        //router.push('/test');
         axios.post(this.$store.state.URLAPI+'/createStudent',this.formData);
         this.completeSignIn =true;
         this.$formkit.reset('formSignIn');
         router.go();
     }
   },
+
+/* ------------------------- Récupération données université & spécialité ------------------------- */
 
   beforeCreate() {
     axios.get(this.$store.state.URLAPI+'/university').then(response => this.universities = (response.data))

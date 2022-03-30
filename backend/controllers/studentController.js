@@ -1,6 +1,6 @@
 const pool = require('../models/model');
 
-
+/* ------------------------- Controller concernant les routes student ------------------------- */
 
 const getAvisofoneStudent = (req,res) => {
   const id = Number(req.params.id)

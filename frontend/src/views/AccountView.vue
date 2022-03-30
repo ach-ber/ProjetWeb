@@ -49,7 +49,7 @@ export default {
   data() {
     return {
       dataAvis:[],
-      urlAvis:'http://localhost:8081/#/AvisView/',
+      urlAvis:'https://feheroku.herokuapp.com/#/AvisView/',
       dataStudent:'',
       vide:false,
     }
@@ -57,6 +57,8 @@ export default {
 
   methods: {
   },
+
+  /* ------------------------- fonction récupération infos student ------------------------- */
 
   beforeMount() {
     axios.get(this.$store.state.URLAPI+'/student/'+this.$store.state.ID).then(response => this.dataStudent = (response.data[0]));

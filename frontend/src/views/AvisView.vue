@@ -24,6 +24,8 @@ export default {
     }
   },
 
+/* ------------------------- fonction récupération infos avis ------------------------- */
+
   beforeCreate() {
     axios.get(this.$store.state.URLAPI+'/avis/'+this.$route.params.id).then(response => this.dataAvis = (response.data[0]));
   },
